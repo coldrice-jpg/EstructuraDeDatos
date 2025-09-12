@@ -1,5 +1,7 @@
 # Matriz de Conexiones para una Red Neuronal Simple
 
+import time
+
 # Matrices
 entrada = [2,5,6]
 
@@ -8,6 +10,8 @@ pesos = [
     [1, 2],
     [4, 6]
 ]
+
+start_time = time.time()
 
 vector = []
 
@@ -26,5 +30,9 @@ for i in range(len(entrada)):
 vector.append(suma_columna1)
 vector.append(suma_columna2)
 
+end_time = time.time()
+
 # Imprimir el vector
-print(vector)
+print("Inicio:", start_time)
+print("Tiempos:", end_time-start_time)
+print("Las sumas son:", vector)
