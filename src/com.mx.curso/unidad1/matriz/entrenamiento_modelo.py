@@ -6,11 +6,11 @@ precisiones = [0.75, 0.81, 0.83, 0.85, 0.86, 0.87, 0.89, 0.97, 0.95]
 print("Lista de precisiones:", precisiones)
 
 # Entrada de cuantas precisiones se quieren agregar
-num_epocas = int(input("\nNúmero de precisiones a agregar: "))
+precisiones_agregar = int(input("\nNúmero de precisiones a agregar: "))
 
 # Ciclo para agregar más precisiones
-for i in range(num_epocas):
-    valor = float(input(f"Precisión a agregar:"))
+for i in range(precisiones_agregar):
+    valor = float(input(f"Precisión a agregar: "))
     if 0 <= valor <= 1:
         precisiones.append(valor)
     else:
