@@ -1,4 +1,3 @@
-
 # Mapa de riesgo
 
 # Crear matriz 8x8
@@ -27,7 +26,6 @@ for i in range(len(matriz)):
             area_riesgo += 1
         if matriz[i][j] == 1:
             area_precaucion += 1
-    
     
 print(f"Area de Riesgo (2): {area_riesgo}")
 print(f"Area de Precaución (1): {area_precaucion}\n")
