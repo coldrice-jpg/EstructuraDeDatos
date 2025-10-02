@@ -1,63 +1,35 @@
 import pandas as pd
 
-# Creación de la matriz inicial
-examenes = [
-    ["Estudiante", "Examen 1", "Examen 2", "Examen 3"],
-    ["Diego", 0, 0, 0], 
-    ["Miguel", 0, 0, 0],
-    ["Juan", 0, 0, 0],
-    ["Alan", 0, 0, 0]
-]
+# Lista de estudiantes y examenes
+estudiantes = ["Diego", "Miguel", "Juan", "Alan"]
+examenes = ["Examen 1", "Examen 2", "Examen 3"]
 
-columnas = examenes[0]
-datos = examenes[1:]
+# Creación del dataframe con los estudiantes y examenes
+calificaciones = pd.DataFrame(0, index=estudiantes, columns=examenes)
 
-df = pd.DataFrame(datos, columns=columnas)
-print(df.to_string(index=False))
-print("\n")
+print("--- Tabla Inicial de Calificaciones ---")
+print(calificaciones)
 
 # Ingresar calificaciones
-for i in range(len(datos)):
-    nombre_estudiante = datos[i][0]
-    for j in range(1, len(columnas)):
-        nombre_examen = columnas[j]
-        calificacion = int(input(f"Calificación de {nombre_estudiante} en el {nombre_examen}: "))
-        datos[i][j] = calificacion
+for estudiante in calificaciones.index:
+    for examen in calificaciones.columns:
+        nota = int(input(f"Calificación de {estudiante} en el {examen}: "))
+        calificaciones.loc[estudiante, examen] = nota
 
-# Mostrar calificaciones
-df = pd.DataFrame(datos, columns=columnas)
-print(df.to_string(index=False))
+print(calificaciones)
 
-# Calcular promedio por estudiante
-print("\nPromedio por Estudiante:")
+# Promedio por estudiante
+promedios_estudiante = calificaciones.mean(axis=1)
+print("\n--- Promedio por Estudiante ---")
+print(promedios_estudiante.round(2).to_string())
 
-for fila in datos:
-    nombre = fila[0]
-    promedio = sum(fila[1:]) / (len(fila) - 1)
-    print(f"{nombre}: {promedio:.2f}")
+# Promedio por examen
+promedios_examen = calificaciones.mean(axis=0)
+print("\n--- Promedio por Examen ---")
+print(promedios_examen.round(2).to_string())
 
-# Calcular promedio por examen
-print("\nPromedio por Examen: ")
+# Calificación Más Alta
+nota_mas_alta = calificaciones.max().max()
+mejor_alumno, examen_destacado = calificaciones.stack().idxmax()
 
-for j in range(1, len(columnas)):
-    suma_examen = 0
-    
-    for i in range(len(datos)):
-        suma_examen += datos[i][j]
-    promedio_examen = suma_examen / len(datos)
-    print(f"{columnas[j]}: {promedio_examen:.2f}")
-
-# Encontrar la calificación más alta
-maxima_nota = -1  
-mejor_estudiante = ""
-examen_max_nota = ""
-
-for fila in datos:
-    nombre_actual = fila[0]
-    for i, nota in enumerate(fila[1:]): 
-        if nota > maxima_nota:
-            maxima_nota = nota
-            mejor_estudiante = nombre_actual
-            examen_max_nota = columnas[i + 1] 
-            
-print(f"La calificación más alta es {maxima_nota}, obtenida por {mejor_estudiante} en el {examen_max_nota}.")
+print(f"La calificación más alta fue {nota_mas_alta}, obtenida por {mejor_alumno} en el {examen_destacado}.")
