@@ -13,7 +13,6 @@ columnas = examenes[0]
 datos = examenes[1:]
 
 df = pd.DataFrame(datos, columns=columnas)
-print("    Tabla Inicial ")
 print(df.to_string(index=False))
 print("\n")
 
