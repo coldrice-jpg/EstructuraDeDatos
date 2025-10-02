@@ -17,7 +17,6 @@ print(df.to_string(index=False))
 print("\n")
 
 # Ingresar calificaciones
-print("    Ingresa las Calificaciones")
 for i in range(len(datos)):
     nombre_estudiante = datos[i][0]
     for j in range(1, len(columnas)):
