@@ -1,13 +1,16 @@
 # Mapa de las temperaturas de una ciudad
 
+# Matriz del mapa
 mapa = [
         [36, 34, 37],
         [33, 34, 35],
         [35, 34, 37]
 ]
 
+# Condición del ciclo while
 terminar = 0
 
+# Ciclo de selección
 while terminar < 1:
     print("Selecciona una opción:\n [1] Consultar mapa.\n [2] Modificar una zona.\n [3] Salir.")
     eleccion = input()
