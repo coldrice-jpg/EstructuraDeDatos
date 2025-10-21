@@ -15,7 +15,7 @@ def diferencia(arr):
         suma_diagonal2 += arr[i][(len(arr) - 1) - i]
         
     return abs(suma_diagonal1 - suma_diagonal2)
-    
+
 # Creación de la matriz
 matriz = [
     [1, 2, 3],
