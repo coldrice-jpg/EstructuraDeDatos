@@ -2,6 +2,7 @@
 
 # Función del ordenamiento
 def ordenar_burbuja(a):
+    
     n = len(a)
 
     veces_recorrida = 0
